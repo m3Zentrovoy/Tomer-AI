@@ -131,7 +131,7 @@ ipconfig getifaddr en0
 ✅ Этап 3: Фронтенд Next.js + iOS SwiftUI
 ✅ Этап 4: Wake Word + VAD + Voice Pipeline
 🔄 Этап 5: Gemini 2.0 Flash Live (сейчас)
-⏳ Этап 6: Деплой Railway + Vercel
+✅ Этап 6: Деплой Railway + Vercel (Завершено, работает в связке с GitHub)
 ⏳ Этап 7: Raspberry Pi 5 — физическая колонка
 ⏳ Этап 8: Home Assistant + Wolt интеграции
 

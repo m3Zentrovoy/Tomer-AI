@@ -1,0 +1,25 @@
+name: TomerAI
+options:
+  bundleIdPrefix: com.example
+targets:
+  TomerAI:
+    type: application
+    platform: iOS
+    supportedDestinations: [iOS, macOS]
+    deploymentTarget:
+      iOS: "16.0"
+      macOS: "13.0"
+    sources: [TomerAI/Sources]
+    info:
+      path: TomerAI/Info.plist
+      properties:
+        NSMicrophoneUsageDescription: "Нужен микрофон для голосового общения с Томером"
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: true
+    settings:
+      base:
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        DEVELOPMENT_TEAM: ""
+        CODE_SIGN_IDENTITY: "Apple Development"
+        CODE_SIGN_STYLE: Automatic
+        ENABLE_PREVIEWS: YES

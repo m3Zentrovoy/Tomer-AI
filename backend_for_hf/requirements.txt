@@ -1,0 +1,33 @@
+# === Основной фреймворк ===
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+
+# === LLM ===
+anthropic==0.42.0
+google-generativeai==0.8.5
+
+# === Speech-to-Text (Этап 2) ===
+openai==1.59.5
+
+# === Text-to-Speech (Этап 2) ===
+google-cloud-texttospeech==2.21.1
+
+# === База данных ===
+aiosqlite==0.20.0
+
+# === Утилиты ===
+python-dotenv==1.0.1
+loguru==0.7.3
+pydantic==2.10.4
+python-multipart==0.0.22
+httpx==0.28.1
+
+# === Wake Word + Audio (Этап 4) ===
+openwakeword
+sounddevice
+webrtcvad
+pyaudio
+numpy
+
+# === Gemini Live (Этап 5) ===
+google-genai

@@ -4,6 +4,7 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
+    "rootDirectory": "frontend",
     "numReplicas": 1,
     "sleepService": false,
     "restartPolicyType": "ON_FAILURE"

@@ -19,9 +19,5 @@ COPY . .
 # Создаем папку для логов, если она нужна
 RUN mkdir -p logs
 
-# Hugging Face Spaces требует, чтобы приложение работало на порту 7860
-ENV PORT=7860
-EXPOSE 7860
-
-# Запускаем FastAPI через Uvicorn на порту 7860
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860"]
+# Запускаем FastAPI через Uvicorn, используя динамический порт от Railway (по дефолту 8000)
+CMD sh -c "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}"

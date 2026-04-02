@@ -82,8 +82,8 @@ export default function VoiceChat() {
       return;
     }
 
-    // Connect directly to the Hugging Face backend to avoid Vercel edge websocket drops
-    const wsUrl = `wss://zentrovoy-tomer-ai.hf.space/ws/live-chat`;
+    // Подключаемся к нашему бэкенду на Railway
+    const wsUrl = process.env.NEXT_PUBLIC_WS_URL || `wss://tomer-ai-production-fe51.up.railway.app/ws/live-chat`;
     const ws = new WebSocket(wsUrl);
 
     ws.onopen = async () => {

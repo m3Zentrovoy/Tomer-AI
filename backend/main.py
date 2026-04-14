@@ -34,16 +34,24 @@ app = FastAPI(
     version="0.2.1",
 )
 
+# === Origin Logger Middleware ===
+class OriginLoggerMiddleware:
+    def __init__(self, app):
+        self.app = app
+
+    async def __call__(self, scope, receive, send):
+        if scope["type"] in ("http", "websocket"):
+            headers = dict(scope.get("headers", []))
+            origin = headers.get(b"origin", b"").decode("utf-8", "ignore")
+            logger.info(f"[{scope['type'].upper()}] Path: {scope.get('path')} | Origin: {origin}")
+        await self.app(scope, receive, send)
+
+app.add_middleware(OriginLoggerMiddleware)
+
 # === CORS ===
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "https://frontend-zentrovoy.vercel.app",
-        "*"
-    ],
-    allow_origin_regex=r"https://.*\.vercel\.app",
-    allow_credentials=True,
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )

@@ -83,7 +83,12 @@ export default function VoiceChat() {
     }
 
     // Подключаемся к нашему бэкенду на Railway
-    const wsUrl = process.env.NEXT_PUBLIC_WS_URL || `wss://tomer-ai-production-fe51.up.railway.app/ws/live-chat`;
+    let wsUrl = process.env.NEXT_PUBLIC_WS_URL || `wss://tomer-ai-production-fe51.up.railway.app/ws/live-chat`;
+    // Защита от неправильно заданного URL в Vercel: 
+    // Если пользователь указал просто домен, дописываем правильный путь
+    if (!wsUrl.endsWith("/ws/live-chat")) {
+      wsUrl = wsUrl.replace(/\/$/, "") + "/ws/live-chat";
+    }
     const ws = new WebSocket(wsUrl);
 
     ws.onopen = async () => {

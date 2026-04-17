@@ -82,12 +82,11 @@ export default function VoiceChat() {
       return;
     }
 
-    // Подключаемся к нашему бэкенду на Railway
-    let wsUrl = process.env.NEXT_PUBLIC_WS_URL || `wss://tomer-ai-production-fe51.up.railway.app/ws/live-chat`;
-    // Защита от неправильно заданного URL в Vercel: 
-    // Если пользователь указал просто домен, дописываем правильный путь
-    if (!wsUrl.endsWith("/ws/live-chat")) {
-      wsUrl = wsUrl.replace(/\/$/, "") + "/ws/live-chat";
+    // Подключаемся к нашему бэкенду НАПРЯМУЮ, минуя Vercel. 
+    // Vercel Serverless принудительно обрывает WebSockets через 10-30 секунд!
+    let wsUrl = "wss://tomer-ai-production-fe51.up.railway.app/ws/live-chat";
+    if (typeof window !== "undefined" && window.location.hostname === "localhost") {
+       wsUrl = process.env.NEXT_PUBLIC_WS_URL || "ws://localhost:8000/ws/live-chat";
     }
     const ws = new WebSocket(wsUrl);
 

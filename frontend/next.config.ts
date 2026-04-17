@@ -5,7 +5,11 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/ws/:path*',
-        destination: 'https://zentrovoy-tomer-ai.hf.space/ws/:path*', // Proxy to Hugging Face Backend
+        destination: 'https://tomer-ai-production-fe51.up.railway.app/ws/:path*', // Proxy to Railway Backend
+      },
+      {
+        source: '/api/:path*',
+        destination: 'https://tomer-ai-production-fe51.up.railway.app/api/:path*', // Proxy API to Railway Backend
       },
     ];
   },

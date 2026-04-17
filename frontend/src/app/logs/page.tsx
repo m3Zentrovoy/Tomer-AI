@@ -17,7 +17,7 @@ export default function LogsPage() {
   // Fetch logs via API endpoint
   const fetchLogs = async () => {
     try {
-      const res = await fetch("https://zentrovoy-tomer-ai.hf.space/api/logs");
+      const res = await fetch("https://tomer-ai-production-fe51.up.railway.app/api/logs");
       const data = await res.json();
       setLogs(data.logs || []);
     } catch (e) {
